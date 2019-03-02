@@ -11,6 +11,9 @@ tmpt = cv2.imread('chandler.jpg', 0)
 imgh, imgw = frnds.shape
 tmph, tmpw = tmpt.shape
 
+cv2.imshow('friends', frnds)
+cv2.imshow('chandler', tmpt)
+
 #matches the full image with the template
 match = cv2.matchTemplate(frnds, tmpt, 3);
 minv, maxv, minl, maxl = cv2.minMaxLoc(match)
@@ -23,7 +26,7 @@ bottom_right = (maxl[0] + tmpw, maxl[1] + tmph)
 cv2.rectangle(frnds, top_left, bottom_right, 255, 2)
 
 #showing result
-cv2.imshow('image', frnds)
+cv2.imshow('matching', frnds)
 key = cv2.waitKey(0)
 #waits for ESC key to be pressed to leave
 if key == 27:
